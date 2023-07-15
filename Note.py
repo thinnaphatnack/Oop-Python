@@ -21,11 +21,14 @@ Ex. def runNing(self):
   
 Setter ,  Getter (Method)
    Setter การกำหนดค่าให้กับ Objet
-Ex. def SetName(self,newname):
+Ex. def setName(self,newname):
       self.__name = newname
    Getter การดึงค่าจาก Object
 Ex. def getName(self):
       return self.__name
+
+*  สามารถใช้ property ( name = property(setName,getName) )
+** สามารถใช้ @property ไว้ด้านบน Method(name) , @ name.setter (กับอีก Method)
 
 Class Variable & Instance Variable
 - Class Variable    คือ ตัวแปลที่ทำงานภายใน Class ส่วนอื่นสามารถเข้าถึงข้อมูลนี้ได้เลย ( Static attrbiute ) โดยไม่จำเป็นต้องสร้าง Object ขึ้นมา *เข้าถึงได้เฉพาะ Public และ Protected
@@ -80,3 +83,19 @@ Static
 
 if __name__ == '__main__' : คือการตรวจสอบว่าคำสั่งที่รันอยู่ภายใน __main__ มาจากคลาสที่อยู่ในไฟล์ หรือ โมดูลเดียวกันหรือไม่
 ช่วยให้เลือกรันหรือไม่รันโค้ดในไฟล์ที่ต้องการได้
+
+4. Abstract
+from abc import ABC, abstractmethod
+
+class MyAbstractClass(ABC):  # ประกาศใช้ ABC ในการสืบทอด
+    @abstractmethod
+    def my_abstract_method(self):
+        pass
+
+class MyChildClass(MyAbstractClass):
+    def my_abstract_method(self):
+        print("Implemented abstract method in the child class")
+
+obj = MyChildClass()
+obj.my_abstract_method()  # Output: Implemented abstract method in the child class
+
